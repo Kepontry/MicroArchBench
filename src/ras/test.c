@@ -19,7 +19,7 @@ void call(int num){
     }
 }
 
-main(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
     printf("\n>>>>> Running RAS Test\n");
 
