@@ -1,0 +1,179 @@
+chenlab@chenlab:~/MicroArchBench$ python3 run.py 
+------------ Env preparation ------------
+Output dir found.
+Output dir cleaned.
+------------ Test compilation ------------
+[ 26%]: cache compiling.release src/ptchase/ptchase_x86.cpp
+[ 26%]: cache compiling.release src/cachelatency/test.c
+[ 26%]: cache compiling.release src/cachelatency/comp.c
+[ 26%]: cache compiling.release src/cachelatency/cache.c
+[ 26%]: cache compiling.release src/c2clatency/c2clatency.c
+[ 28%]: cache compiling.release src/ldstforward/ldstforward_x86.cpp
+[ 28%]: cache compiling.release src/mlp/test.c
+[ 28%]: cache compiling.release src/mlp/cache.c
+[ 28%]: cache compiling.release src/membandwidth/stream.c
+[ 28%]: cache compiling.release src/ras/test.c
+[ 30%]: cache compiling.release src/pipewidth/pipewidth_x86.cpp
+[ 34%]: cache compiling.release src/movelimination/movelimination_x86.cpp
+[ 34%]: cache compiling.release src/freq/freq_x86.cpp
+[ 36%]: cache compiling.release src/instlatency/instlatency_x86.cpp
+src/ptchase/ptchase_x86.cpp: In function ‘void ptchase_test(std::string, double)’:
+src/ptchase/ptchase_x86.cpp:67:12: warning: too many arguments for format [-Wformat-extra-args]
+   67 |     printf("Pointer chasing: %f\n", f, 1/f);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~
+src/ptchase/ptchase_x86.cpp: In function ‘void noptchase_test(std::string, double)’:
+src/ptchase/ptchase_x86.cpp:112:12: warning: too many arguments for format [-Wformat-extra-args]
+  112 |     printf("No pointer chasing: %f\n", f, 1/f);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+src/instlatency/instlatency_x86.cpp: In function ‘void faddlat_test(std::string, double)’:
+src/instlatency/instlatency_x86.cpp:292:12: warning: too many arguments for format [-Wformat-extra-args]
+  292 |     printf("Fadd latency: %f\n", f, 1/f);
+      |            ^~~~~~~~~~~~~~~~~~~~
+src/instlatency/instlatency_x86.cpp: In function ‘void faddbw_test(std::string, double)’:
+src/instlatency/instlatency_x86.cpp:332:12: warning: too many arguments for format [-Wformat-extra-args]
+  332 |     printf("Fadd bandwidth: %f\n", f, 1/f);
+      |            ^~~~~~~~~~~~~~~~~~~~~~
+src/instlatency/instlatency_x86.cpp: In function ‘void fmalat_test(std::string, double)’:
+src/instlatency/instlatency_x86.cpp:372:12: warning: too many arguments for format [-Wformat-extra-args]
+  372 |     printf("Fma latency: %f\n", f, 1/f);
+      |            ^~~~~~~~~~~~~~~~~~~
+src/instlatency/instlatency_x86.cpp: In function ‘void fmabw_test(std::string, double)’:
+src/instlatency/instlatency_x86.cpp:427:12: warning: too many arguments for format [-Wformat-extra-args]
+  427 |     printf("Fma bandwidth: %f\n", f, 1/f);
+      |            ^~~~~~~~~~~~~~~~~~~~~
+[ 56%]: linking.release ptchase_test
+[ 56%]: linking.release cachelatency_test
+[ 56%]: linking.release ldstforward_test
+[ 56%]: linking.release mlp_test
+[ 56%]: linking.release membandwidth_test
+[ 56%]: linking.release ras_test
+[ 56%]: linking.release pipewidth_test
+[ 56%]: linking.release movelimination_test
+[ 56%]: linking.release freq_test
+[ 56%]: linking.release c2clatency_test
+[ 58%]: linking.release instlatency_test
+[100%]: build ok, spent 0.216s
+------------ Load config ------------
+2
+------------ Test run ------------
+Frequency: 4.774965 GHz, Cycle time: 0.209426 ns
+ALU width: 5.368969
+Nop width: 7.679660
+BRU width: 2.873390
+FPU width: 3.989672
+Rename width: 6.159633
+Load width: 2.933464
+Store width: 1.975733
+AGU width: 3.930555
+sh: 1: /home/chenlab/MicroArchBench/build/linux/x86_64/release/fetchwidth_test: not found
+Mul latency: 3.070156
+Mul bandwidth: 2.605043
+Div(unsigned) latency: 16.223034 (plz compute)
+Div(signed) latency: 15.932276 (plz compute)
+Div(unsigned) bandwidth: 0.095437
+Fadd latency: 2.005734
+Fadd bandwidth: 1.982553
+Fma latency: 3.995231
+Fma bandwidth: 1.932518
+Fmul latency: 2.999288
+Fmul bandwidth: 1.794194
+Fdiv latency: 11.989299
+Fdiv bandwidth: 0.497014
+Fsqrt latency: 18.753776
+Mov imm zero: 3.955312
+Mov imm one: 3.931414
+Mov chain: 7.029020
+Mov single: 6.884760
+Fmov single: 7.975827
+Mov self: 0.998411
+Mov self mul: 5.386845
+Mov bounce: 7.588387
+Sub eli: 7.448434
+Xor_eli: 7.681893
+Pointer chasing: 4.001653
+No pointer chasing: 4.998838
+
+>>>>> Running BTB Capacity Test
+BTB test running interval:0
+BTB test running interval:1
+BTB test running interval:3
+BTB test running interval:7
+BTB test running interval:15
+
+>>>>> Running ITLB Capacity Test
+BTB test running interval:1024
+
+>>>>> Running Cache Latency Test
+TEST: rperrpage
+TEST: linear
+TEST: random
+TEST: rinrvprange
+
+>>>>> Running Memory Bandwidth Test
+STREAM version $Revision: 5.10 $
+This system uses 8 bytes per array element.
+Array size = 100000000 (elements), Offset = 0 (elements)
+Memory per array = 762.9 MiB (= 0.7 GiB).
+Total memory required = 2288.8 MiB (= 2.2 GiB).
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:           58128.6     0.028052     0.027525     0.031733
+Scale:          30328.9     0.053664     0.052755     0.059567
+Add:            35407.5     0.069078     0.067782     0.082355
+Triad:          35185.4     0.069641     0.068210     0.082933
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+
+>>>>> Running Store-to-load Forward Test
+rm: cannot remove 'test': No such file or directory
+>>>>> Running Branch Prediction Test
+30
+>>>>> Running Indirect Branch Prediction Test(Branch Num)
+30
+>>>>> Running Indirect Branch Prediction Test(Branch Num) New
+30
+>>>>> Running Indirect Branch Prediction Test (Target)
+15
+>>>>> Running Indirect Branch Prediction Test (Target) New
+15
+
+>>>>> Running RAS Test
+
+>>>>> Running RAS(Dist) Capacity Test
+
+>>>>> Running Instruction Fetch Test
+
+>>>>> Testing Core-to-core Latency
+
+>>>>> Running MLP Test
+TEST: random probe with interleave: 1
+TEST: random probe with interleave: 2
+TEST: random probe with interleave: 3
+TEST: random probe with interleave: 4
+TEST: random probe with interleave: 6
+TEST: random probe with interleave: 8
+TEST: random probe with interleave: 12
+TEST: random probe with interleave: 16
+TEST: random probe with interleave: 20
+TEST: random probe with interleave: 24
+TEST: random probe with interleave: 28
+TEST: random probe with interleave: 32
+
+>>>>> Testing ROB
+
+>>>>> Testing XPRF
+
+>>>>> Testing CPRF
+
+>>>>> Testing FPRF
+
+>>>>> Testing LDQ
+
+>>>>> Testing STQ
+
+>>>>> Testing XIS
+
+>>>>> Testing XCIS
+
+>>>>> Testing FIS
+
+>>>>> Testing LDIS
+

@@ -5,7 +5,7 @@ build/
 # MacOS Cache
 .DS_Store
 
-res
+#res
 cur.env
 
 .vscode
